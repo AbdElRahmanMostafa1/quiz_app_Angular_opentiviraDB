@@ -1,0 +1,30 @@
+<section *ngIf="isLoading">
+  <app-loading></app-loading>
+</section>
+
+<section *ngIf="error">
+  <app-error></app-error>
+</section>
+
+<section class="text-center" *ngIf="!isLoading && category">
+  <h6>{{ feedback }}</h6>
+  <p>
+    Your score is <span class="fw-bold"> {{ score }} / {{ amount }} </span>
+  </p>
+
+  <div class="card w-100">
+    <article class="d-flex justify-content-center">
+      <img [src]="img" style="max-width: 275px" />
+    </article>
+
+    <div class="card-body text-capitalize">
+      <p class="card-text">
+        your knowledge in <span class="fw-bold"> {{ category }} </span> is
+        <span class="fw-bold">{{ level }}</span>
+      </p>
+      <a [routerLink]="['/']" class="btn btn-primary d-block w-100">
+        Take Another Quiz
+      </a>
+    </div>
+  </div>
+</section>

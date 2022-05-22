@@ -1,0 +1,46 @@
+<section *ngIf="isLoading">
+  <app-loading></app-loading>
+</section>
+
+<section *ngIf="error">
+  <app-error></app-error>
+</section>
+
+<section *ngIf="quiz.length > 0 || (isLoading === false && !error)">
+  <h3 class="text-center mb-3">Question {{ questionIndex + 1 }}</h3>
+
+  <h4 class="text-center mb-4">
+    {{ decode(quiz[questionIndex].question) }}
+  </h4>
+
+  <article class="mb-5" *ngIf="quiz[questionIndex].type === 'multiple'">
+    <button
+      class="btn btn-primary d-block mb-2 w-100"
+      *ngFor="let answer of shuffledAsnwers"
+      (click)="checkAnswerHandler($event.target)"
+    >
+      {{ decode(answer) }}
+    </button>
+  </article>
+
+  <article class="mb-5" *ngIf="quiz[questionIndex].type === 'boolean'">
+    <button
+      class="btn btn-primary d-block mb-2 w-100"
+      (click)="checkAnswerHandler($event.target)"
+    >
+      True
+    </button>
+
+    <button
+      class="btn btn-primary d-block mb-2 w-100"
+      (click)="checkAnswerHandler($event.target)"
+    >
+      False
+    </button>
+  </article>
+
+  <p class="text-center">
+    <span class="fw-700"> score: </span> {{ score }} /
+    {{ quiz.length }}
+  </p>
+</section>
