@@ -11,31 +11,35 @@
 <section *ngIf="!isLoading && !error">
   <h3 class="text-center mb-3">Quiz Config</h3>
 
-  <app-select
-    labelTitle="Category"
-    [SelectOptionsArray]="catergoryList?.trivia_categories"
-    (getValue)="selectCatHandler($event)"
-  ></app-select>
+  <form>
+    <app-select
+      labelTitle="Category"
+      [SelectOptionsArray]="catergoryList?.trivia_categories"
+      (getValue)="selectCatHandler($event)"
+    ></app-select>
 
-  <app-select
-    labelTitle="Difficulty"
-    [SelectOptionsArray]="difficultyList"
-    (getValue)="selectDiffHandler($event)"
-  ></app-select>
+    <app-select
+      labelTitle="Difficulty"
+      [SelectOptionsArray]="difficultyList"
+      (getValue)="selectDiffHandler($event)"
+    ></app-select>
 
-  <app-select
-    labelTitle="Type"
-    [SelectOptionsArray]="typeList"
-    (getValue)="selectTypeHandler($event)"
-  ></app-select>
+    <app-select
+      labelTitle="Type"
+      [SelectOptionsArray]="typeList"
+      (getValue)="selectTypeHandler($event)"
+    ></app-select>
 
-  <app-input
-    inputLabel="Amount Of Questions"
-    (inputChange)="inputChangeHandler($event)"
-    [QuesAmount]="amount"
-  ></app-input>
+    <app-input
+      inputLabel="Amount Of Questions"
+      (inputChange)="inputChangeHandler($event)"
+      [QuesAmount]="amount"
+    ></app-input>
 
-  <a routerLink="/quiz">
-    <button class="btn btn-primary d-block w-100">Start Quiz</button>
-  </a>
+    <a routerLink="/quiz">
+      <button class="btn btn-primary d-block w-100" type="submit">
+        Start Quiz
+      </button>
+    </a>
+  </form>
 </section>
